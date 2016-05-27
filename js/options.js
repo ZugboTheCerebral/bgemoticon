@@ -70,6 +70,6 @@ $(function () {
     });
     
     $("#saveChanges").click(function() {
-        chrome.runtime.sendMessage("", {type:"set"}, emoticons);
+        chrome.runtime.sendMessage({type:"set", data:emoticons});
     });
 });
