@@ -28,9 +28,9 @@ function removeEmoticon(shortcutToDelete) {
 
 $(function () {
     // load current data
-    chrome.storage.sync.get({"emoticons": []}, 
+    chrome.storage.local.get({"emoticons": []}, 
     function(options) {
-        emoticons = options.emoticons;
+        emoticons = options.emoticons || emoticons;
         
         // populate form
         emoticons.forEach(function(emote) {
@@ -70,8 +70,6 @@ $(function () {
     });
     
     $("#saveChanges").click(function() {
-        chrome.storage.sync.set({
-            "emoticons": emoticons
-        });
+        chrome.runtime.sendMessage("", {type:"set"}, emoticons);
     });
 });

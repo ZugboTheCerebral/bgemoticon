@@ -23,11 +23,10 @@ function generateCustomList()
     return ul;
 }
 
-chrome.storage.sync.get({"emoticons": []}, 
-    function(options) {
-        emoticons = options.emoticons;
+chrome.runtime.sendMessage("", {type:"get"}, "", function(em) {
+        emoticons = em;
         
-        $("#postmodify").submit(replaceShortcuts);
+        $("#postmodify").submit(replaceShortcuts);        
 
         // gross
         var tr = $("<tr>");

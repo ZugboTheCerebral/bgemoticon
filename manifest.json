@@ -2,15 +2,30 @@
     "manifest_version": 2,
     "name": "Badgame Custom Emoticons",
     "description": "Use cool custom emotes on Badgame.net, and have a good time with your friends.",
-    "version": "0.69",
+    "version": "0.69FF",
     
     "icons": {
         "16": "icon16.png",
         "48": "icon48.png",
         "128": "icon128.png"
     },
+
+    "browser_action": {
+      "default_icon": {
+        "16": "icon16.png",
+        "48": "icon48.png"
+      },
+      "default_title": "Badgame Emoticons",
+      "default_popup": "options.html"
+    },
     
-    "options_page": "options.html",
+    "options_ui": {
+      "page": "options.html"
+    },
+
+    "background": {
+      "scripts": ["js/bg.js"]
+    },
     
     "content_scripts": [
         {
@@ -26,5 +41,11 @@
     
     "permissions": [
         "storage"
-    ]
+    ],
+
+    "applications": {
+      "gecko": {
+        "id": "emoticons@badgame"
+      }
+    }
 }
